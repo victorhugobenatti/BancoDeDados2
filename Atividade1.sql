@@ -45,8 +45,8 @@ CREATE TABLE VendaProduto(
     numero INT NOT NULL,
     codPro INT NOT NULL,
     PRIMARY KEY (numero, codPro),
-    FOREIGN KEY numero REFERENCES Venda(numero),
-    FOREIGN KEY codPro REFERENCES Produto(codPro)
+    FOREIGN KEY (numero) REFERENCES Venda(numero),
+    FOREIGN KEY (codPro) REFERENCES Produto(codPro)
 );
 
 
@@ -60,8 +60,8 @@ ADD codCliente INT NOT NULL;
 -- Exercício 3:
 
 ALTER TABLE Venda
-ADD FOREIGN KEY codVendedor REFERENCES Vendedor(codVendedor),
-ADD FOREIGN KEY codCliente REFERENCES Cliente(codCliente);
+ADD FOREIGN KEY (codVendedor) REFERENCES Vendedor(codVendedor),
+ADD FOREIGN KEY (codCliente) REFERENCES Cliente(codCliente);
 
 
 -- Exercício 4:
@@ -91,10 +91,10 @@ ADD precoUnitario DECIMAL (10,2) NOT NULL;
 
 -- Exercício 8:
 
-INSERT INTO TipoProduto VALUES (1, "Processador");
-INSERT INTO Produto VALUES (1, "Ryzen 3 3200G", 549,90, 1);
-INSERT INTO Produto VALUES (2, "Ryzen 5 5600", 879,90, 1, 1);
-INSERT INTO Cliente VALUES (1, "Victor Hugo Benatti", "999.999.999-99", "(62) 99785-1010", "Av. 85", "cliente@gmail.com");
-INSERT INTO Vendedor VALUES (1, "Vendedor Amigo", "99.999-99", 2500,00);
-INSERT INTO Venda VALUES (1, 2023-10-03, 50,00, 1, 1);
-INSERT INTO VendaProduto VALUES (1, 2, 5, 879,90);
+INSERT INTO TipoProduto(codtipo, descricao) VALUES (1, 'Processador');
+INSERT INTO Produto(codpro, descricao, preco, codtipo, unidade) VALUES (1, 'Ryzen 3 3200G', 549.90, 1, 1);
+INSERT INTO Produto(codpro, descricao, preco, codtipo, unidade) VALUES (2, 'Ryzen 5 5600', 879.90, 1, 1);
+INSERT INTO Cliente(codcliente, nome, cpf, telefone, endereco, email) VALUES (1, 'Victor Hugo Benatti', '999.999.999-99', '(62) 99785-1010', 'Av. 85', 'cliente@gmail.com');
+INSERT INTO Vendedor(codvendedor, nome, rg, salario) VALUES (1, 'Vendedor Amigo', '99.999-99', 2500.00);
+INSERT INTO Venda(numero, data, valorfrete, codvendedor, codcliente) VALUES (1, '2023-10-03', 50.00, 1, 1);
+INSERT INTO VendaProduto(numero, codpro, quantidade, precounitario) VALUES (1, 2, 5, 879.90);
